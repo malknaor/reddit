@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import * as Routes from '../constants/Routes';
 import '../css/main.css';
@@ -12,12 +13,10 @@ class Navigation extends React.Component {
                     <h1 className="reddit-title">reddit</h1>
                 </div>
                 <div className="posts-navigation">
-                    <a className="post-link" href="/">Best</a>
-                    <a className="post-link" href={Routes.HOT}>Hot</a>
-                    <a className="post-link" href={Routes.NEW}>New</a>
-                    <a className="post-link" href={Routes.TOP}>Top</a>
-                    {/* <a className="post-link" href={Routes.RANDOM}>Random</a>
-                    <a className="post-link" href={Routes.TRENDING}>Trending</a> */}
+                    <Link className="post-link" to="/">Best</Link>
+                    <Link className="post-link" to={Routes.HOT}>Hot</Link>
+                    <Link className="post-link" to={Routes.NEW}>New</Link>
+                    <Link className="post-link" to={Routes.TOP}>Top</Link>
                 </div>
             </div>
         );

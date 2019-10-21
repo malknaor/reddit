@@ -20,12 +20,16 @@ const PostItem = props => {
                 <div className="subreddit-container">
                     <img className="subreddit-thumbnail" src={props.data.thumbnail} alt=""></img>
                     <h4 className="subreddit-name">{props.data.subreddit_name_prefixed}</h4>
-                      .   
-                    <h5 className="post-details">{`Posted by ${props.data.author} ${new Date(new Date() - new Date(props.data.created_utc))}`}</h5>
+                    &nbsp;•&nbsp;
+                    <h5 className="post-details">
+                        {`Posted by ${props.data.author} ${new Date(new Date() - new Date(props.data.created_utc))}`}
+                    </h5>
                 </div>
                 <div className="post-content">
                     <h3 className="content-title">{props.data.title}</h3>
-                    <a className="content-link" href={props.data.url}>{props.data.url}</a>
+                    <a className="content-link" href={props.data.url} target="_blank">
+                        {props.data.url}
+                    </a>
                 </div>
             </div>
         </div>
