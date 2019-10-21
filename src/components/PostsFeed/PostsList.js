@@ -1,35 +1,41 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-import reddit from '../API/reddit';
-import PostItem from './PostItem';
+import { fetchPosts } from '../actions';
+// import reddit from '../API/reddit';
+import PostListItem from './PostListItem';
 import '../../css/main.css';
 
-class Posts extends React.Component {
-    state = { posts: [], error: '' }
-
+class PostsList extends React.Component {
     componentDidUpdate() {
         this.renderPosts();
     }
 
-    componentDidMount() {
-        reddit.get(this.props.path)
-            .then(res => this.setState({ ...this.state, posts: res.data.data.children }))
-            .catch(err => this.setState({ ...this.state, error: err.message }));
-    }
-
     renderPosts = () => {
-        if (this.state.posts.length > 0 && this.state.error === '') {
+        if (this.props.posts.length > 0) {
             return (
                 <div className="posts-list">
-                    {this.state.posts.map((current, index) => <PostItem data={current.data} key={index} />)}
+                    {this.props.posts.map((current, index) => <PostListItem data={current.data} key={index} />)}
                 </div>
             );
-        } else {
-            return <div>Loading</div>;
-        }
+        } 
+
+        return (
+            <div className="posts-loading">
+                <div className="loading-label">
+                    Loading...
+                </div>
+            </div>
+        );
+    }
+
+    componentDidMount() {
+        this.props.fetchPosts(this.props.path);
     }
 
     render() {
+        console.log(this.props);
+
         return (
             <div className="posts-container">
                 <h2 className="posts-title">{this.props.title}</h2>
@@ -39,4 +45,8 @@ class Posts extends React.Component {
     }
 }
 
-export default Posts;
+const mapStateToProps = state => {
+    return { posts: state.posts };
+};
+
+export default connect(mapStateToProps, { fetchPosts })(PostsList);

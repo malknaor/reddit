@@ -1,6 +1,5 @@
 import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
-import { createStore } from 'redux';
 
 import Navigation from './Navigation';
 import BestPostsPage from './PostsFeed/pages/BestPostsPage';

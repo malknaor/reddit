@@ -2,7 +2,7 @@ import React from 'react';
 
 import '../../css/main.css';
 
-const PostItem = props => {
+const PostListItem = props => {
     return (
         <div className="post-card">
             <div className="votes-container">
@@ -36,4 +36,4 @@ const PostItem = props => {
     );
 };
 
-export default PostItem;
+export default PostListItem;
