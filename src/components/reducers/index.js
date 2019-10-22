@@ -9,7 +9,7 @@ const selectedPostTypeReducer = (state = [], action) => {
     }
 
     return state;
-}
+};
 
 const selectedPostReducer = (selectedPost = null, action) => {
     if (action.type === SELECT_POST) {

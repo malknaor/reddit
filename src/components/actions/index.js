@@ -4,7 +4,7 @@ import reddit from '../API/reddit';
 export const fetchPosts = postsType => async dispatch => {
     const response = await reddit.get(postsType);
 
-    dispatch({ type: FETCH_POSTS, payload: response });
+    dispatch({ type: FETCH_POSTS, payload: response.data.data.children });
 };
 
 export const selectPostsType = postsType => {
